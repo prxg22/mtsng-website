@@ -1,0 +1,41 @@
+// config
+cols-hd = 12
+gutter-hd = 12
+margin-hd = 72
+container-hd = 1440
+
+// functions
+col-hd(n)
+  margin = margin-hd * 2
+  gutter = gutter-hd * 2
+  container = container-hd - margin
+  col = (container / cols-hd) - gutter
+  unit(n * col, px)
+
+hd()
+  @media screen and (min-width: 1440px)
+    {block}
+
+lg()
+  @media screen and (min-width: 1280px) and (max-width: 1439px)
+    {block}
+
+md()
+  @media screen and (min-width: 768px) and (max-width: 1279px)
+    {block}
+
+sm()
+  @media screen and (min-width: 540px) and (max-width: 767px)
+    {block}
+
+xs()
+  @media screen and (max-width: 539px)
+    {block}
+
+// classes
+.container
+  display: flex
+
+  width: unit(container-hd, px)
+  margin: 0 unit(margin-hd, px)
+  height: 100%
