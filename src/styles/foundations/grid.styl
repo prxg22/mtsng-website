@@ -1,18 +1,3 @@
-my_config = {
-  lg: {
-    min: 1024,
-    c: 12,
-    m: 72,
-    g: 24
-  }
-  md: {
-    min: 1440,
-    c: 12,
-    m: 72,
-    g: 32
-  }
-}
-
 row()
   .row
     display: flex
@@ -41,13 +26,16 @@ col(n, breakpoint, config)
     max = n * (config.min - 2 * config.m) / config.c
     min =  max - config.g
 
+    // max-width: unit(max, px)
+    flex-basis: unit(min, px)
     margin: 0 unit(gutter, px)
-    max-width: unit(max, px)
+
 
 col-offset(n, breakpoint, config)
   .col-offset-{breakpoint}-{n}
     gutter = config.g / 2
-    offset = n * (config.min - 2 * config.m) / config.c
+    max = n * (config.min - 2 * config.m) / config.c
+    offset = max - config.g
 
     margin-left: unit(gutter + offset, px) !important
 
@@ -62,12 +50,6 @@ grid(configs)
       for breakpoint, config in configs
         +above(config.min)
           for n in 1..(config.c)
-            col(n, breakpoint, config)
-          for n in 1..(config.c)
             col-offset(n, breakpoint, config)
-
-
-
-  // for breakpoint, config in configs
-
-grid(my_config)
+            col(n, breakpoint, config)
+          // for n in 1..(config.c)
