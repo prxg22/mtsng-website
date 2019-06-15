@@ -1,41 +1,73 @@
-// config
-cols-hd = 12
-gutter-hd = 12
-margin-hd = 72
-container-hd = 1440
+my_config = {
+  lg: {
+    min: 1024,
+    c: 12,
+    m: 72,
+    g: 24
+  }
+  md: {
+    min: 1440,
+    c: 12,
+    m: 72,
+    g: 32
+  }
+}
 
-// functions
-col-hd(n)
-  margin = margin-hd * 2
-  gutter = gutter-hd * 2
-  container = container-hd - margin
-  col = (container / cols-hd) - gutter
-  unit(n * col, px)
+row()
+  .row
+    display: flex
+    width: 100%
+    flex-wrap: wrap
 
-hd()
-  @media screen and (min-width: 1440px)
+    > [class*="col-"]
+      flex: 1
+
+      &:first-child
+        margin-left: 0
+      &:last-child
+        margin-right: 0
+
     {block}
 
-lg()
-  @media screen and (min-width: 1280px) and (max-width: 1439px)
-    {block}
+container(config)
+  +above(config.min)
+    padding: 0 unit(config.m, px)
+    margin: 0 auto
+    width: unit(config.min, px)
 
-md()
-  @media screen and (min-width: 768px) and (max-width: 1279px)
-    {block}
+col(n, breakpoint, config)
+  .col-{breakpoint}-{n}
+    gutter = config.g / 2
+    max = n * (config.min - 2 * config.m) / config.c
+    min =  max - config.g
 
-sm()
-  @media screen and (min-width: 540px) and (max-width: 767px)
-    {block}
+    margin: 0 unit(gutter, px)
+    max-width: unit(max, px)
 
-xs()
-  @media screen and (max-width: 539px)
-    {block}
+col-offset(n, breakpoint, config)
+  .col-offset-{breakpoint}-{n}
+    gutter = config.g / 2
+    offset = n * (config.min - 2 * config.m) / config.c
 
-// classes
-.container
-  display: flex
+    margin-left: unit(gutter + offset, px) !important
 
-  width: unit(container-hd, px)
-  margin: 0 unit(margin-hd, px)
-  height: 100%
+
+
+grid(configs)
+  .container
+    for breakpoint, config in configs
+      container(config)
+
+    +row()
+      for breakpoint, config in configs
+        +above(config.min)
+          for n in 1..(config.c)
+            col(n, breakpoint, config)
+          for n in 1..(config.c)
+            col-offset(n, breakpoint, config)
+
+
+
+  // for breakpoint, config in configs
+
+grid(my_config)
