@@ -7,27 +7,28 @@ row()
     > [class*="col-"]
       flex: 1
 
-      &:first-child
-        margin-left: 0
-      &:last-child
-        margin-right: 0
-
     {block}
 
 container(config)
   +above(config.min)
+    w = unit(config.min, px)
+    if w <= 0
+      w = 100%
     padding: 0 unit(config.m, px)
     margin: 0 auto
-    width: unit(config.min, px)
+    width: w
 
 col(n, breakpoint, config)
   .col-{breakpoint}-{n}
     gutter = config.g / 2
     max = n * (config.min - 2 * config.m) / config.c
     min =  max - config.g
+    basis = unit(min, px)
 
-    // max-width: unit(max, px)
-    flex-basis: unit(min, px)
+    if min <= 0
+      basis = 100%
+
+    flex-basis: basis
     margin: 0 unit(gutter, px)
 
 

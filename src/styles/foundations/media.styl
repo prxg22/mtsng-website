@@ -6,6 +6,10 @@ below(max)
   @media screen and (max-width: unit(max, px))
     {block}
 
-lg()
+tablet()
+  +above(768)
+    {block}
+    
+desktop()
   +above(1024)
     {block}

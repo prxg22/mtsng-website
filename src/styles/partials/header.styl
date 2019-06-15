@@ -1,22 +1,26 @@
 header
+  background-color: $white-01
   display: flex
   flex-direction: column
-  padding-top: $spacing.xxhg
-  height: 100%
   box-sizing: border-box
 
+  padding-top: $spacing.md
+  position: fixed
+  z-index: 9999
+  width: 100%
+
   #logo
-    display: block
+    svg
+      width: 111px
+      height: 39px
 
-    +lg()
-      margin-bottom: $spacing.xxhg
-
-      svg
-        width: 111px
-        height: 39px
+  // nav, #social
+  //   display: none
 
   nav
+    margin-top: $spacing.hg
     margin-bottom: $spacing.xhg
+
     li
       margin-bottom: $spacing.md
 
@@ -29,7 +33,6 @@ header
         line-height: 26px
 
   #social
-    display: flex
     flex-direction: column
     justify-content: space-between
     margin-top: auto
@@ -45,3 +48,18 @@ header
       li
         font-weight: 100
         margin-bottom: $spacing.sm
+
+
+  +tablet()
+    height: 100%
+    padding-top: $spacing.xxhg
+    position: static
+
+    #logo
+      margin-bottom: $spacing.xxhg
+
+    nav
+      display: block
+
+    #social
+      display: flex
