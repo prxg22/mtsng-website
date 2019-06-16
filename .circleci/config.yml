@@ -41,34 +41,20 @@ jobs:
           name: Run build
           command: NODE_ENV=production yarn build --public-url /$CIRCLE_PROJECT_REPONAME/ --no-source-maps
       - run:
-          name: create gh-pages branch
+          name: Copy build
           command: |
-            rm -rf gh-pages-branch
-            mkdir gh-pages-branch
-            cd gh-pages-branch
+            rm -r `find . |grep -v "dist"`
+            cp -a dist .
+            rm -rf dist
       - run:
-          name: Init repository
+          name: Deplou
           command: |
-            git init
-            git remote add --fetch origin $CIRCLE_REPOSITORY_URL
-
-            if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
-            then
-                git checkout gh-pages
-                git rm -rf .
-            else
-                git checkout --orphan gh-pages
-            fi
-      - run:
-          name: Deploy build
-          command: |
-            cp -a ../dist/ .
             git add -A
             git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
             git push --force --quiet origin gh-pages
-
       - run:
           name: Clean
+          workspace: ~/repo
           command: |
             cd ..
             rm -rf gh-pages-branch
