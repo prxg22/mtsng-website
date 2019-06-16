@@ -66,9 +66,16 @@ header
         font-weight: 100
         margin-bottom: $spacing.sm
 
+  #menu_btn
+    z-index: 99999
+    position: absolute
+    top: 32px
+    right: 16px
 
   +mobile()
+    max-height: 68px
     position: fixed
+    max-width: calc(100% - 24px);
 
     &.open
       padding-top: $spacing.md
@@ -77,3 +84,6 @@ header
   +tablet()
     padding-top: $spacing.xxhg
     {active}
+
+    #menu_btn
+      display: none

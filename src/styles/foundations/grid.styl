@@ -44,13 +44,15 @@ col-offset(n, breakpoint, config)
 
 grid(configs)
   .container
+    position: relative
     for breakpoint, config in configs
       container(config)
 
     +row()
       for breakpoint, config in configs
         +above(config.min)
+          if config.min > 0
+            max-width: unit(config.min, px)
           for n in 1..(config.c)
             col-offset(n, breakpoint, config)
             col(n, breakpoint, config)
-          // for n in 1..(config.c)
