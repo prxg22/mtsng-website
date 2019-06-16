@@ -38,8 +38,39 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
-          name: Run deploy script
-          command: yarn gh-pages
+          name: Run build
+          command: NODE_ENV=production yarn build --public-url /$CIRCLE_PROJECT_REPONAME/ --no-source-maps
+      - run:
+          name: create gh-pages branch
+          command:
+            mkdir gh-pages-branch
+            cd gh-pages-branch
+      - run:
+          name: Init repository
+          command:
+            # git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
+            # git config --global user.name "$GH_NAME" > /dev/null 2>&1
+            git init
+            git remote add --fetch origin $CIRCLE_REPOSITORY_URL
+            if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
+            then
+                git checkout gh-pages
+                git rm -rf .
+            else
+                git checkout --orphan gh-pages
+            fi
+      - run:
+          name: deploy build
+          command:
+            cp -a ../dist/ .
+            git add -A
+            git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
+            git push --force --quiet origin gh-pages
+            cd ..
+            rm -rf gh-pages-branch
+            echo "Finished Deployment!"
+
+
 
 workflows:
   version: 2
