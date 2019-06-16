@@ -60,7 +60,8 @@ jobs:
       - run:
           name: Clean
           command: |
-            git co master
+            git checkout master
+            git checkout .
 
 
 workflows:
