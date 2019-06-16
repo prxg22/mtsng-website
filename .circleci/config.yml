@@ -50,6 +50,7 @@ jobs:
             git rm -rf .
             rm -rf node_modules/
             cp ./dist/* ./
+            rm -rf dist/
       - run:
           name: Deploy
           command: |
