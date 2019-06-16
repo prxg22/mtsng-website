@@ -58,7 +58,7 @@ jobs:
             rm -rf dist/
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
-            git push -f origin HEAD:gh-pages
+            git push
 
 
 workflows:
