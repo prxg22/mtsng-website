@@ -47,15 +47,15 @@ jobs:
             git config --global user.name circleci
             git fetch
             git checkout gh-pages
-            git rm -rf .
             rm -rf node_modules/
             cd dist/
             cp -a ./ ../
+            cd ../
+            rm -rf dist/
 
       - run:
           name: Deploy
           command: |
-            rm -rf dist/
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
             git push
