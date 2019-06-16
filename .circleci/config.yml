@@ -46,10 +46,11 @@ jobs:
             git config --global user.email circleci@cirlcleci.com
             git config --global user.name circleci
             git fetch
-            git co -b test
+            git checkout gh-pages
             git rm -rf .
             rm -rf node_modules/
-            cp ./dist/* ./
+            cd dist/
+            cp -a ./ ../
 
       - run:
           name: Deploy
