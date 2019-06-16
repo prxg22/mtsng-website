@@ -48,6 +48,7 @@ jobs:
             git fetch
             git checkout gh-pages
             git rm -rf .
+            rm -rf node_modules/
             cp ./dist/* ./
       - run:
           name: Deploy
