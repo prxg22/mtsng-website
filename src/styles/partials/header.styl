@@ -1,3 +1,19 @@
+active =
+  min-height: 100%
+
+  #logo
+    margin-bottom: $spacing.xxhg
+
+  nav, #social
+    visibility: visible
+    opacity: 1
+
+  nav
+    display: block
+
+  #social
+    display: flex
+
 header
   background-color: $white-01
   display: flex
@@ -5,7 +21,6 @@ header
   box-sizing: border-box
 
   padding-top: $spacing.md
-  position: fixed
   z-index: 9999
   width: 100%
 
@@ -14,8 +29,10 @@ header
       width: 111px
       height: 39px
 
-  // nav, #social
-  //   display: none
+  nav, #social
+    display: none
+    visibility: hidden;
+    opacity: 0
 
   nav
     margin-top: $spacing.hg
@@ -50,16 +67,13 @@ header
         margin-bottom: $spacing.sm
 
 
+  +mobile()
+    position: fixed
+
+    &.open
+      padding-top: $spacing.md
+      {active}
+
   +tablet()
-    height: 100%
     padding-top: $spacing.xxhg
-    position: static
-
-    #logo
-      margin-bottom: $spacing.xxhg
-
-    nav
-      display: block
-
-    #social
-      display: flex
+    {active}
