@@ -44,22 +44,18 @@ jobs:
       - run:
           name: Copy build
           command: |
-            git rm package.json
-            git rm yarn.lock
-            git rm -rf .circleci/
-            git rm -rf src/
-            cd dist
-            cp -a ./ ../
-            cd ..
-            rm -rf dist/
+            git co gh-pages
+            git rm -rf .
+            cp -a ./dist ./
       - run:
           name: Deploy
           command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
+            git config --global user.email circleci@cirlcleci.com
+            git config --global user.name circleci
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
-            git push -f origin HEAD:gh-pages
+            git push
+
       - run:
           name: Clean
           command: |
