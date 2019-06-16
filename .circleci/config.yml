@@ -55,7 +55,7 @@ jobs:
             git config --global user.name $GH_NAME
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
-            git push -f origin gh-pages
+            git push -f origin HEAD:gh-pages
       - run:
           name: Clean
           command: |
