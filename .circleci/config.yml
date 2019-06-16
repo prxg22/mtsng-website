@@ -46,23 +46,18 @@ jobs:
             git config --global user.email circleci@cirlcleci.com
             git config --global user.name circleci
             git fetch
-            git checkout gh-pages
+            git co -b test
             git rm -rf .
             rm -rf node_modules/
             cp ./dist/* ./
-            rm -rf dist
+
       - run:
           name: Deploy
           command: |
+            rm -rf dist/
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
-            git push
-
-      - run:
-          name: Clean
-          command: |
-            git checkout master
-            git checkout .
+            git push -f origin HEAD:gh-pages
 
 
 workflows:
