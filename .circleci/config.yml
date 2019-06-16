@@ -45,10 +45,10 @@ jobs:
           command: |
             git rm package.json
             git rm yarn.lock
-            git rm -rf .circleci
-            git rm -rf src
-            cp -a dist .
-            rm -rf dist
+            git rm -rf .circleci/
+            git rm -rf src/
+            cp -a dist/ .
+            rm -rf dist/
       - run:
           name: Deploy
           command: |
