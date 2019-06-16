@@ -32,9 +32,6 @@ jobs:
   gh-pages:
     <<: *defaults
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "06:21:07:ff:96:79:43:fc:a5:44:e9:1a:d9:3e:bb:6d"
       - attach_workspace:
           at: ~/repo
       - run:
@@ -54,11 +51,13 @@ jobs:
       - run:
           name: Deploy
           command: |
-            git config --global user.email $GH_EMAIL
-            git config --global user.name $GH_NAME
             git add -A
-            git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
-            git push --force --quiet origin gh-pages
+            git commit -m "chore: Deploy to GitHub pages [ci skip]"
+            git push -force origin gh-pages
+      - run:
+          name: Clean
+          command: |
+            git co .
 
 
 workflows:
