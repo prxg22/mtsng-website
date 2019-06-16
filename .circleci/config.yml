@@ -34,24 +34,23 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - add_ssh_keys:
-          fingerprints:
-            - '06:21:07:ff:96:79:43:fc:a5:44:e9:1a:d9:3e:bb:6d'
-      - run: ssh-keyscan 192.30.253.112 >> ~/.ssh/known_hosts
+
       - run:
           name: Run build
           command: NODE_ENV=production yarn build --public-url /$CIRCLE_PROJECT_REPONAME/ --no-source-maps
+
       - run:
           name: Copy build
           command: |
+            git config --global user.email circleci@cirlcleci.com
+            git config --global user.name circleci
+            git fetch
             git co gh-pages
             git rm -rf .
             cp -a ./dist ./
       - run:
           name: Deploy
           command: |
-            git config --global user.email circleci@cirlcleci.com
-            git config --global user.name circleci
             git add -A
             git commit -m "chore: Deploy to GitHub pages [ci skip]"
             git push
@@ -59,7 +58,7 @@ jobs:
       - run:
           name: Clean
           command: |
-            git co .
+            git co master
 
 
 workflows:
