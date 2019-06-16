@@ -48,7 +48,7 @@ jobs:
             git fetch
             git checkout gh-pages
             git rm -rf .
-            cp -a ./dist/ ./
+            cp ./dist/* ./
       - run:
           name: Deploy
           command: |
