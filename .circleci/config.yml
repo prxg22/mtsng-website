@@ -43,22 +43,18 @@ jobs:
       - run:
           name: Copy build
           command: |
-            rm -r `find . |grep -v "dist"`
+            git rm package.json
+            git rm yarn.lock
+            git rm -rf .circleci
+            git rm -rf src
             cp -a dist .
             rm -rf dist
       - run:
-          name: Deplou
+          name: Deploy
           command: |
             git add -A
             git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
             git push --force --quiet origin gh-pages
-      - run:
-          name: Clean
-          workspace: ~/repo
-          command: |
-            cd ..
-            rm -rf gh-pages-branch
-            echo "Finished Deployment!"
 
 
 workflows:
