@@ -47,7 +47,7 @@ jobs:
             git rm yarn.lock
             git rm -rf .circleci/
             git rm -rf src/
-            cp -a dist/ .
+            cp -a ~/repo/dist/ .
             rm -rf dist/
       - run:
           name: Deploy
