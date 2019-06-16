@@ -43,6 +43,7 @@ jobs:
       - run:
           name: create gh-pages branch
           command:
+            rm -rf gh-pages-branch
             mkdir gh-pages-branch
             cd gh-pages-branch
       - run:
