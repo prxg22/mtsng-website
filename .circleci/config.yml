@@ -37,6 +37,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - '06:21:07:ff:96:79:43:fc:a5:44:e9:1a:d9:3e:bb:6d'
+      - run: ssh-keyscan 192.30.253.112 >> ~/.ssh/known_hosts
       - run:
           name: Run build
           command: NODE_ENV=production yarn build --public-url /$CIRCLE_PROJECT_REPONAME/ --no-source-maps
