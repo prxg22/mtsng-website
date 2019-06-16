@@ -46,7 +46,7 @@ jobs:
             git config --global user.email circleci@cirlcleci.com
             git config --global user.name circleci
             git fetch
-            git co gh-pages
+            git checkout gh-pages
             git rm -rf .
             cp -a ./dist ./
       - run:
