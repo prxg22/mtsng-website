@@ -1,0 +1,27 @@
+
+#about
+  img
+    margin-bottom: $spacing.xhg
+
+  #awards, #bio
+    min-height: 100%
+
+  #bio
+    +mobile()
+      margin-bottom: $spacing.md
+
+  #awards
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    +mobile()
+      margin-bottom: 34px
+      margin-left: 0
+
+    ul
+      &, li
+        margin-bottom: $spacing.md
+
+        &:last-child
+          margin-bottom: 0
