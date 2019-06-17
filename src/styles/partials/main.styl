@@ -1,7 +1,16 @@
 mobile-header-padding = 67px
 
 main
-  &, section
+  height: 100%
+
+
+  section
+    padding-top: 67px
     min-height: 100%
 
+    +tablet()
+      padding-top: 0
+
   @import "./cover"
+  @import "./about"
+  @import "./work"

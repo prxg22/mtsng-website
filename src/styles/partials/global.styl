@@ -5,12 +5,6 @@ grid-config = {
     m: 16,
     g: 8
   }
-  // sm: {
-  //   min: 435,
-  //   c: 4,
-  //   m: 16,
-  //   g: 8
-  // }
   md: {
     min: 768,
     c: 8,
@@ -39,50 +33,54 @@ body
   height: 100%
 
 body
+  @extend $font-default
   display: flex
   justify-content: center
 
-  main, header
-    overflow-y: scroll
-    scroll-behavior: smooth
-    box-sizing: border-box
+main, header
+  overflow-y: scroll
+  scroll-behavior: smooth
+  box-sizing: border-box
 
-    &
-      -ms-overflow-style: none;  // IE 10+
-      scrollbar-width: none;  // Firefox
+  &
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
 
-    &::-webkit-scrollbar
-      display: none;  // Safari and Chrome
+  &::-webkit-scrollbar
+    display: none;  // Safari and Chrome
 
-  &, h1, h2, h3, h4, h5, h6
-  p, a, span
-    font-family: 'Graphik'
-    color: $font-01
-    margin: 0
+p, a, span
+  margin: 0
 
-  h1
-    font-size: 56px
-    letter-spacing: -0.5px
-    font-weight: 600
+h1, h2, h3, h4, h5, h6
+  @extend $font-title
+  @extend $font-default
+  margin-bottom: $spacing.md
+  margin-top: 0
 
+ul
+  list-style: none
+  padding: 0
+  margin: 0
 
-  ul
-    list-style: none
-    padding: 0
-    margin: 0
+button
+  background-color: transparent
+  border: none
+  padding: $spacing.xs $spacing.sm
 
-  a
-    text-decoration: none
+a
+  text-decoration: none
+  color: $grey-01
+  cursor: pointer
+
+  &:hover
     color: $grey-01
-    cursor: pointer
+    text-decoration: underline
 
-    &:hover
-      color: $grey-01
-      text-decoration: underline
+  &:active
+    color: $grey-01
+    text-decoration: none
 
-    &:active
-      color: $grey-01
-      text-decoration: none
-
-
+img
+  max-width: 100%
 grid(grid-config)

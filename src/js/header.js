@@ -1,5 +1,6 @@
 const HeaderController = (headerSelector = 'header') => {
   const header = document.querySelector(headerSelector)
+
   let _open = false
 
   const open = () => {
