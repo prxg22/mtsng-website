@@ -1,5 +1,6 @@
 
 #about
+  padding-bottom: $spacing.xhg
   img
     margin-bottom: $spacing.xhg
 
@@ -7,17 +8,24 @@
     min-height: 100%
 
   #bio
-    +mobile()
-      margin-bottom: $spacing.md
+    margin-bottom: $spacing.md
+    text-align: justify;
+
+    +desktop()
+      margin-bottom:  0
 
   #awards
     display: flex
     flex-direction: column
     justify-content: center
 
-    +mobile()
-      margin-bottom: 34px
-      margin-left: 0
+    margin-bottom: $spacing.lg
+
+    margin-left: 0
+
+    +desktop()
+      margin-left: 12px
+      margin-bottom:  0
 
     ul
       &, li
