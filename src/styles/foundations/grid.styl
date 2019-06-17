@@ -7,6 +7,13 @@ row()
     > [class*="col-"]
       flex: 1
 
+    .row
+      > [class*="col-"]
+        &:first-child
+          margin-left: 0
+        &:last-child
+          margin-right: 0
+
     {block}
 
 container(config)
