@@ -7,13 +7,6 @@ row()
     > [class*="col-"]
       flex: 1
 
-    .row
-      > [class*="col-"]
-        &:first-child
-          margin-left: 0
-        &:last-child
-          margin-right: 0
-
     {block}
 
 container(config)
@@ -28,14 +21,13 @@ container(config)
 col(n, breakpoint, config)
   .col-{breakpoint}-{n}
     gutter = config.g / 2
-    max = n * (config.min - 2 * config.m) / config.c
-    min =  max - config.g
-    basis = unit(min, px)
+    container = (config.min && unit(config.min, px)) || 100%
+    margin = unit(2 * config.m, px)
 
-    if min <= 0
-      basis = 100%
+    col-str = "calc( ( ( %s * %s - ( 2 * %s ) ) / %s ) - %s )"
+    col = s(col-str, n, container, margin, config.c, unit(config.g, px))
 
-    flex-basis: basis
+    flex-basis: col
     margin: 0 unit(gutter, px)
 
 
@@ -46,8 +38,6 @@ col-offset(n, breakpoint, config)
     offset = max - config.g
 
     margin-left: unit(gutter + offset, px) !important
-
-
 
 grid(configs)
   .container
@@ -61,5 +51,5 @@ grid(configs)
           if config.min > 0
             max-width: unit(config.min, px)
           for n in 1..(config.c)
-            col-offset(n, breakpoint, config)
             col(n, breakpoint, config)
+            col-offset(n, breakpoint, config)
