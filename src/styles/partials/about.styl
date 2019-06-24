@@ -4,9 +4,6 @@
   img
     margin-bottom: $spacing.xhg
 
-  #awards, #bio
-    min-height: 100%
-
   #bio
     margin-bottom: $spacing.md
     text-align: justify;
@@ -21,15 +18,17 @@
 
     margin-bottom: $spacing.lg
 
-    margin-left: 0
-
-    +desktop()
-      margin-left: 12px
-      margin-bottom:  0
-
     ul
       &, li
         margin-bottom: $spacing.md
 
         &:last-child
           margin-bottom: 0
+
+
+  #awards, #bio
+    min-height: 100%
+
+    +not-desktop()
+      margin-left: 0
+      margin-right: 0
