@@ -1,5 +1,8 @@
+import * as Works from './works'
+import HeaderController from './header'
+
 window.onload = () => {
-  const headerController = window.HeaderController('header')
+  const headerController = HeaderController('header')
   const nav = document.querySelector('header nav')
   const navAnchors = document.querySelectorAll('header nav a')
   const menuButton = document.querySelector('#menu_btn')
@@ -19,6 +22,9 @@ window.onload = () => {
   logo.onclick = ({ currentTarget }) => {
     if (currentTarget === logo) headerController.close()
   }
+
+  const firstGallery = document.querySelector('.gallery')
+  Works.init(firstGallery)
 
   // const scrollAnimation = window.ScrollAnimation(main, cover, (offset) => {
   //   console.log('scrolling on cover', offset)
