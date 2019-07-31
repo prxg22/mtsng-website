@@ -1,3 +1,26 @@
 #work
   h2
     @extend $font-project-title
+
+  article
+    padding: $spacing.xxhg 0
+
+    .row
+      margin-bottom: $spacing.xhg
+
+
+  .gallery
+    display: flex
+    flex-direction: row
+    overflow-x: auto
+    max-width: 100%;
+
+    img
+      w = s('calc(100% - %s)', $spacing.xxhg)
+      width: 100%
+      max-width: w
+      margin-right: $spacing.lg
+
+      +hd()
+        w = s('calc(50% - %s)', $spacing.xxhg)
+        max-width: w

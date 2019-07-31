@@ -4,6 +4,8 @@ window.onload = () => {
   const navAnchors = document.querySelectorAll('header nav a')
   const menuButton = document.querySelector('#menu_btn')
   const logo = document.querySelector('a#logo')
+  const main = document.querySelector('main')
+  const cover = document.querySelector('#cover')
 
   menuButton.onclick = () => {
     headerController.toggle()
@@ -17,4 +19,10 @@ window.onload = () => {
   logo.onclick = ({ currentTarget }) => {
     if (currentTarget === logo) headerController.close()
   }
+
+  // const scrollAnimation = window.ScrollAnimation(main, cover, (offset) => {
+  //   console.log('scrolling on cover', offset)
+  // })
+  //
+  // scrollAnimation.init()
 }
