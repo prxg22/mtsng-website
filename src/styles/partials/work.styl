@@ -8,9 +8,19 @@
     .row
       margin-bottom: $spacing.xhg
 
+      > *:first-child
+        margin-left: 0
+      > *:last-child
+        margin-right: 0
+
+      +not-desktop()
+        > *
+          margin-left: 0
+          margin-right: 0
 
   .gallery
     display: flex
+    position: relative
     flex-direction: row
     overflow-x: auto
     max-width: 100%;
@@ -25,3 +35,17 @@
       +hd()
         w = s('calc(50% - %s)', $spacing.xxhg)
         max-width: w
+
+    button
+      position: absolute;
+      top: 0
+      height: 100%
+      background-color: rgba(0, 0, 0, .3)
+      color: white
+      font-size: 24px
+
+      &.previous
+        left: 0
+
+      &.next
+        right: 0

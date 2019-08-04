@@ -24,4 +24,4 @@ const HeaderController = (headerSelector = 'header') => {
   return { open, close, toggle }
 }
 
-window.HeaderController = HeaderController
+export default HeaderController

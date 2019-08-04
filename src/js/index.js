@@ -1,12 +1,18 @@
+import HeaderController from './header'
+import Gallery from './gallery'
+
 window.onload = () => {
-  const headerController = window.HeaderController('header')
+  const headerController = HeaderController('header')
+
   const nav = document.querySelector('header nav')
   const navAnchors = document.querySelectorAll('header nav a')
   const menuButton = document.querySelector('#menu_btn')
   const logo = document.querySelector('a#logo')
   const main = document.querySelector('main')
   const cover = document.querySelector('#cover')
+  const galleries = []
 
+  // header
   menuButton.onclick = () => {
     headerController.toggle()
   }
@@ -20,9 +26,16 @@ window.onload = () => {
     if (currentTarget === logo) headerController.close()
   }
 
-  // const scrollAnimation = window.ScrollAnimation(main, cover, (offset) => {
-  //   console.log('scrolling on cover', offset)
-  // })
-  //
-  // scrollAnimation.init()
+  // galleries
+  document.querySelectorAll('.gallery').forEach(g => {
+    const gallery = Gallery(g)
+    galleries.push(gallery)
+    gallery.load()
+  })
+
+  window.onresize = () => {
+    galleries.forEach(gallery => {
+      gallery.load()
+    })
+  }
 }
