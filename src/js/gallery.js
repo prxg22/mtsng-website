@@ -24,13 +24,16 @@ const Gallery = (gallery) => {
   const container = gallery.querySelector('.gallery__container')
 
   const width = () => gallery.clientWidth
+  const isMobile = () => window.innerWidth < 1024
 
   const showButton = (dir = 'next') => {
+    if (showing[dir] || isMobile()) return
     showing[dir] = true
     gallery.appendChild(button[dir])
   }
 
   const hideButton = (dir = 'next') => {
+    if (!showing[dir]) return
     showing[dir] = false
     gallery.removeChild(button[dir])
   }
@@ -49,8 +52,8 @@ const Gallery = (gallery) => {
       prev: Button('prev', { onClick: go }),
     }
 
-    gallery.onmouseenter = () => showButton('next') || showButton('prev')
-    gallery.onmouseleave = () => hideButton('next') || hideButton('prev')
+    gallery.onmouseenter = () => showButton('prev') || showButton('next')
+    gallery.onmouseleave = () => hideButton('prev') || hideButton('next')
   }
 
   return { load }
