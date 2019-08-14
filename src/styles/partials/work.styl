@@ -2,6 +2,7 @@
   h2
     @extend $font-project-title
 
+
   article
     +desktop()
       &:nth-child(odd)
@@ -38,39 +39,7 @@
         margin-left: 0
         margin-right: 0
 
-
-  .gallery
-    display: flex
-    position: relative
-    flex-direction: row
-    overflow-x: auto
-    max-width: 100%;
-
-    img
-      w = s('calc(100% - %s)', $spacing.xxhg)
-      width: 100%
-      max-width: w
-      flex: 1 0 w
-      margin-right: $spacing.lg
-
-      +hd()
-        w = s('calc(50% - %s)', $spacing.xxhg)
-        max-width: w
-
-    button
-      position: absolute;
-      top: 0
-      height: 100%
-      background-color: rgba(0, 0, 0, .3)
-      color: white
-      font-size: 24px
-
-      &.previous
-        left: 0
-
-      &.next
-        right: 0
-
-
   hr
     margin: $spacing.xxhg 0
+
+  @import gallery

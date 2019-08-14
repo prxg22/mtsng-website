@@ -1,0 +1,40 @@
+.gallery
+  position: relative
+
+  .gallery__container
+    display: flex
+    position: relative
+    flex-direction: row
+    overflow-x: auto
+    max-width: 100%
+
+    img
+      w = s('calc(100% - %s)', $spacing.xxhg)
+      width: 100%
+      max-width: w
+      flex: 1 0 w
+      margin-right: $spacing.lg
+
+      +hd()
+        w = s('calc(50% - %s)', $spacing.xxhg)
+        max-width: w
+
+  button
+    animation: nav_container_entrance .2s ease-in-out
+    position: absolute
+    t = s('calc(50% - %s)', $spacing.hg / 2)
+    top: t
+    color: $white-01
+    background-color: $grey-01
+    box-shadow: 1px 1px 3px $grey-02
+    text-align: center
+    border-radius: 50%
+    font-size: 24px
+    width: $spacing.hg
+    height: $spacing.hg
+
+    &.previous
+      left: 10px
+
+    &.next
+      right: 10px
