@@ -1,18 +1,15 @@
+@import "../animations/menu";
+@import "../animations/nav_container";
+
+animation_time = .24s
+animation_delay = .04s
+
 active =
   min-height: 100%
 
   #logo
     margin-bottom: $spacing.xxhg
 
-  nav, #social
-    visibility: visible
-    opacity: 1
-
-  nav
-    display: block
-
-  #social
-    display: flex
 
 header
   background-color: $white-01
@@ -29,44 +26,44 @@ header
       width: 111px
       height: 39px
 
-  nav, #social
-    display: none
-    visibility: hidden;
-    opacity: 0
-
-  nav
-    margin-top: $spacing.hg
-    margin-bottom: $spacing.xhg
-
-    li
-      margin-bottom: $spacing.md
-
-      &:last-child
-        margin-bottom: 0
-
-      a
-        @extend $font-light
-        @extend $font-nav-anchor
-
-  #social
-    flex-direction: column
-    justify-content: space-between
-    margin-top: auto
-    margin-bottom: $spacing.hg
-
-    h4, ul
-      margin-bottom: $spacing.md
-
-    ul
-      li
-        @extend $font-light
-        margin-bottom: $spacing.sm
-
   #menu_btn
     z-index: 99999
     position: absolute
     top: $spacing.md
     right: $spacing.sm
+
+  .nav_container
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    nav
+      margin-top: $spacing.hg
+      margin-bottom: $spacing.xhg
+
+      li
+        margin-bottom: $spacing.md
+
+        &:last-child
+          margin-bottom: 0
+
+        a
+          @extend $font-light
+          @extend $font-nav-anchor
+
+    #social
+      flex-direction: column
+      justify-content: space-between
+      margin-top: auto
+      margin-bottom: $spacing.hg
+
+      h4, ul
+        margin-bottom: $spacing.md
+
+      ul
+        li
+          @extend $font-light
+          margin-bottom: $spacing.sm
 
   +mobile()
     max-height: 68px
@@ -75,7 +72,17 @@ header
 
     &.open
       padding-top: $spacing.md
-      {active}
+      animation: menu_entrance animation_time ease-in-out forwards
+
+      .nav_container
+        animation: nav_container_entrance animation_time animation_delay ease-in-out forwards
+
+    &.close
+      animation: menu_exit animation_time ease-in-out forwards
+
+      .nav_container
+        animation: nav_container_exit animation_time ease-in-out forwards
+
 
   +tablet()
     padding-top: $spacing.xxhg

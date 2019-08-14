@@ -6,11 +6,13 @@ const HeaderController = (headerSelector = 'header') => {
   const open = () => {
     _open = true
     header.classList.add('open')
+    header.classList.remove('close')
   }
 
   const close = () => {
     _open = false
     header.classList.remove('open')
+    header.classList.add('close')
   }
 
   const toggle = () => {

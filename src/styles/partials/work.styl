@@ -3,20 +3,41 @@
     @extend $font-project-title
 
   article
-    padding: $spacing.xxhg 0
+    +desktop()
+      &:nth-child(odd)
+        .row
+          > *:first-child
+            margin-left: 0
+          > *:last-child
+            margin-right: 0
 
-    .row
-      margin-bottom: $spacing.xhg
+        .title
+          order: 1
 
-      > *:first-child
+        .desc
+          order: 2
+
+      &:nth-child(even)
+        .row
+          > *:first-child
+            margin-right: 0
+          > *:last-child
+            margin-left: 0
+
+        .title
+          order: 2
+
+        .desc
+          order: 1
+
+  .row
+    margin-bottom: $spacing.xhg
+
+    +not-desktop()
+      > *
         margin-left: 0
-      > *:last-child
         margin-right: 0
 
-      +not-desktop()
-        > *
-          margin-left: 0
-          margin-right: 0
 
   .gallery
     display: flex
@@ -49,3 +70,7 @@
 
       &.next
         right: 0
+
+
+  hr
+    margin: $spacing.xxhg 0
