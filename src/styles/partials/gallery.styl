@@ -20,21 +20,23 @@
         max-width: w
 
   button
-    animation: nav_container_entrance .2s ease-in-out
     position: absolute
     t = s('calc(50% - %s)', $spacing.hg / 2)
     top: t
-    color: $white-01
-    background-color: $grey-01
+    color: $grey-01
+    background-color: $white-01
     box-shadow: 1px 1px 3px $grey-02
     text-align: center
     border-radius: 50%
     font-size: 24px
     width: $spacing.hg
     height: $spacing.hg
+    outline-style:
 
-    &.previous
+    &.prev
       left: 10px
+      animation: gallery_button_prev_move .2s ease-in-out, gallery_button_visibility .2s ease-in-out
 
     &.next
       right: 10px
+      animation: gallery_button_next_move .2s ease-in-out, gallery_button_visibility .2s ease-in-out

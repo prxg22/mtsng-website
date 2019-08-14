@@ -1,43 +1,38 @@
-const Gallery = (gallery) => {
-  let rightButton
-  let showingRightButton = false
+const Button = (dir, {
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
+  const button = document.createElement('button')
 
+  button.innerText = dir === 'next'
+    ? '>'
+    : '<'
+
+  button.classList.add(dir)
+
+  button.onclick = (ev) => {
+    onClick(dir, ev)
+  }
+
+  return button
+}
+
+const Gallery = (gallery) => {
+  let button
+  const showing = { prev: false, next: false }
   const container = gallery.querySelector('.gallery__container')
 
   const width = () => gallery.clientWidth
 
-  const showRightButton = () => {
-    showingRightButton = true
-    gallery.appendChild(rightButton)
+  const showButton = (dir = 'next') => {
+    showing[dir] = true
+    gallery.appendChild(button[dir])
   }
 
-  const hideRightButton = () => {
-    showingRightButton = false
-    gallery.removeChild(rightButton)
-  }
-
-  const createButton = (dir = 'next') => {
-    const button = document.createElement('button')
-    button.innerText = dir === 'next'
-      ? '>'
-      : '<'
-
-    button.classList.add(dir)
-    button.onclick = () => {
-      go(dir)
-    }
-
-    gallery.onmouseenter = () => {
-      if (!showingRightButton)
-        showRightButton()
-    }
-
-    gallery.onmouseleave = () => {
-      if (showingRightButton)
-        hideRightButton()
-    }
-
-    return button
+  const hideButton = (dir = 'next') => {
+    showing[dir] = false
+    gallery.removeChild(button[dir])
   }
 
   const go = (dir = 'next') => {
@@ -49,7 +44,13 @@ const Gallery = (gallery) => {
   }
 
   const load = () => {
-    rightButton = createButton()
+    button = {
+      next: Button('next', { onClick: go }),
+      prev: Button('prev', { onClick: go }),
+    }
+
+    gallery.onmouseenter = () => showButton('next') || showButton('prev')
+    gallery.onmouseleave = () => hideButton('next') || hideButton('prev')
   }
 
   return { load }
