@@ -1,3 +1,4 @@
+import smoothscroll from 'smoothscroll-polyfill'
 import HeaderController from './header'
 import Gallery from './gallery'
 
@@ -12,18 +13,32 @@ window.onload = () => {
   const cover = document.querySelector('#cover')
   const galleries = []
 
+  smoothscroll.polyfill()
+
   // header
   menuButton.onclick = () => {
     headerController.toggle()
   }
 
-  nav.onclick = ({ target }) => {
+  nav.onclick = (ev) => {
+    const { target } = ev
     const anchors = Array.prototype.slice.call(navAnchors)
-    if (anchors.includes(target)) headerController.close()
+    if (!anchors.includes(target)) return
+    ev.preventDefault()
+
+    const selector = target.attributes.href.value
+    const section = document.querySelector(selector)
+
+    section.scrollIntoView({ behavior: 'smooth' })
+    headerController.close()
   }
 
-  logo.onclick = ({ currentTarget }) => {
-    if (currentTarget === logo) headerController.close()
+  logo.onclick = (ev) => {
+    debugger
+    ev.preventDefault()
+    const section = document.querySelector('#cover')
+    section.scrollIntoView({ behavior: 'smooth' })
+    headerController.close()
   }
 
   // galleries
