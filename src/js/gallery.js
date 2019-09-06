@@ -44,7 +44,7 @@ const Gallery = (gallery) => {
       : -1
 
     container.scrollBy({
-      left: direction * width(),
+      left: container.clientWidth * direction,
       behavior: 'smooth'
     })
   }

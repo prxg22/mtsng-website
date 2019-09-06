@@ -11,6 +11,7 @@ window.onload = () => {
   const logo = document.querySelector('a#logo')
   const main = document.querySelector('main')
   const cover = document.querySelector('#cover')
+  const sections = document.querySelectorAll('section')
   const galleries = []
 
   smoothscroll.polyfill()
@@ -34,7 +35,6 @@ window.onload = () => {
   }
 
   logo.onclick = (ev) => {
-    debugger
     ev.preventDefault()
     const section = document.querySelector('#cover')
     section.scrollIntoView({ behavior: 'smooth' })
@@ -51,6 +51,13 @@ window.onload = () => {
   window.onresize = () => {
     galleries.forEach(gallery => {
       gallery.load()
+    })
+  }
+
+  main.onscroll = (ev) => {
+    sections.forEach(section => {
+      const offset = main.scrollTop - section.offsetTop
+      section.style = `opacity: ${1 + (offset / 500)}`
     })
   }
 }
