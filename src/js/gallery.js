@@ -43,7 +43,10 @@ const Gallery = (gallery) => {
       ? 1
       : -1
 
-    container.scrollLeft += direction * width()
+    container.scrollBy({
+      left: direction * width(),
+      behavior: 'smooth'
+    })
   }
 
   const load = () => {
