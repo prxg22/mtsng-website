@@ -1,5 +1,5 @@
 $font-default
-  font-family: 'Graphik'
+  font-family: 'Graphik', sans
   color: $font-01
   letter-spacing: -0.12px
   font-size: 14px
@@ -15,12 +15,17 @@ $font-hero
   font-size: 48px
   letter-spacing: -0.4px
 
-  // +mobile()
-  //   font-size: 40px
-  //   letter-spacing: -0.4px
+  +mobile()
+    font-size: 32px
 
 $font-hero-subtitle
-  color: $font-2
+  @extend $font-bold
+  color: $font-02
+  font-size: 32px
+
+  +not-desktop()
+    font-size: 24px
+
 
 $font-title
   @extend $font-bold
