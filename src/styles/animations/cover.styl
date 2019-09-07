@@ -1,0 +1,44 @@
+$negative-xs = $spacing.xs * -1
+$negative-md = $spacing.md * -1
+
+@keyframes cover-subline-appearence {
+  0% {
+    transform: translateY($negative-md);
+  }
+
+  100% {
+    opacity: 1
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cover-headline-movement {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes cover-icon-appearence {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes cover-icon-movement {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY($negative-xs);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
