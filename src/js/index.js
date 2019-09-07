@@ -1,6 +1,7 @@
 import smoothscroll from 'smoothscroll-polyfill'
 import HeaderController from './header'
 import Gallery from './gallery'
+import Scroll from './scroll'
 
 window.onload = () => {
   const headerController = HeaderController('header')
@@ -11,7 +12,9 @@ window.onload = () => {
   const logo = document.querySelector('a#logo')
   const main = document.querySelector('main')
   const cover = document.querySelector('#cover')
+  const mouseIcon = cover.querySelector('#cover .mouse-icon path')
   const sections = document.querySelectorAll('section')
+  const projects = document.querySelectorAll('#work article')
   const galleries = []
 
   smoothscroll.polyfill()
@@ -54,10 +57,7 @@ window.onload = () => {
     })
   }
 
-  main.onscroll = (ev) => {
-    sections.forEach(section => {
-      const offset = main.scrollTop - section.offsetTop
-      section.style = `opacity: ${1 + (offset / 500)}`
-    })
-  }
+  const { show, fade } = Scroll(main)
+  show([...Array.from(sections), ...Array.from(projects)])
+  fade([mouseIcon])
 }

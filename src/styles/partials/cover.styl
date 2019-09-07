@@ -1,5 +1,8 @@
 #cover
-  align-items: center
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
 
   h1
     &, p
@@ -7,3 +10,25 @@
 
     p
       @extend $font-light
+
+  .headline
+    transform: translateY(50%);
+    animation: cover-headline-movement 2s 1s ease-in-out forwards
+
+  .subline
+    @extend $font-hero-subtitle
+    animation: cover-subline-appearence 2s 1.2s ease-in-out forwards
+    opacity: 0
+    visibility: hidden
+
+  .mouse-icon
+    position: absolute;
+    bottom: $spacing.lg
+    left: calc(50% - 12px)
+    opacity: 0
+
+    animation: cover-icon-appearence .4s 3.2s ease-in-out forwards,
+      cover-icon-movement 1s ease infinite
+
+    +not-desktop()
+      display: none
