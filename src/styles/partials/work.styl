@@ -11,6 +11,12 @@
 
 
   article
+    .desc
+      h4, h5
+        margin: $spacing.sm 0
+
+      h5
+        @extend $font-project-topic-title
     +desktop()
       &:nth-child(odd)
         .row
@@ -19,11 +25,11 @@
           > *:last-child
             margin-right: 0
 
-        .title
-          order: 1
-
-        .desc
-          order: 2
+        // .title
+        //   order: 1
+        //
+        // .desc
+        //   order: 2
 
       &:nth-child(even)
         .row
@@ -31,12 +37,12 @@
             margin-right: 0
           > *:last-child
             margin-left: 0
-
-        .title
-          order: 2
-
-        .desc
-          order: 1
+        // 
+        // .title
+        //   order: 2
+        //
+        // .desc
+        //   order: 1
 
   .row
     margin-bottom: $spacing.xhg
