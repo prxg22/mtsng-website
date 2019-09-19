@@ -19,6 +19,7 @@ window.onload = () => {
 
   smoothscroll.polyfill()
 
+  const unlock = () => main.classList.remove('locked')
   // header
   menuButton.onclick = () => {
     headerController.toggle()
@@ -60,4 +61,5 @@ window.onload = () => {
   const { show, fade } = Scroll(main)
   show([...Array.from(sections), ...Array.from(projects)])
   fade([mouseIcon])
+  unlock()
 }
