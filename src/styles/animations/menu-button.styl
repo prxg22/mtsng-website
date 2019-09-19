@@ -1,41 +1,41 @@
 @keyframes transform-open-button-last-line
   0%
-    transform: translateY(-40%) rotate(-45deg)
+    transform: translateY(-4px) rotate(-45deg)
   50%
-    transform: translateY(-40%) rotate(0)
+    transform: translateY(-4px) rotate(0)
   100%
     transform: translateY(0)
 
 @keyframes transform-close-button-last-line
   50%
-    transform: translateY(-40%)
+    transform: translateY(-4px)
 
   100%
-    transform: translateY(-40%) rotate(-45deg)
+    transform: translateY(-4px) rotate(-45deg);
 
 @keyframes transform-open-button-first-line
   0%
-    transform: translateY(40%) rotate(45deg)
+    transform: translateY(4px) rotate(45deg)
   50%
-    transform: translateY(40%) rotate(0)
+    transform: translateY(4px) rotate(0)
   100%
     transform: translateY(0)
 
 @keyframes transform-close-button-first-line
   50%
-    transform: translateY(40%)
+    transform: translateY(4px)
 
   100%
-    transform: translateY(40%) rotate(45deg)
-
-@keyframes transform-close-button-middle-line
-  to
-    opacity: 0;
+    transform: translateY(4px) rotate(45deg)
 
 @keyframes transform-open-button-middle-line
   from
     opacity: 0;
   99%
-    opacity: .4;
+    opacity: 0;
   to
     opacity: 1;
+
+@keyframes transform-close-button-middle-line
+  to
+    opacity: 0;
