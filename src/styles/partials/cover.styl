@@ -13,11 +13,11 @@
 
   .headline
     transform: translateY(50%);
-    animation: cover-headline-movement 2s 1s ease-in-out forwards
+    // animation: cover-headline-movement 2s 1s ease-in-out forwards
 
   .subline
     @extend $font-hero-subtitle
-    animation: cover-subline-entrance 2s 1.2s ease-in-out forwards
+    // animation: cover-subline-entrance 2s 1.2s ease-in-out forwards
     opacity: 0
     visibility: hidden
 
@@ -27,8 +27,18 @@
     left: calc(50% - 12px)
     opacity: 0
 
-    animation: cover-icon-entrance .4s 3.2s ease-in-out forwards,
-      cover-icon-movement 1s ease infinite
+    // animation: cover-icon-entrance .4s 3.2s ease-in-out forwards,
+    //   cover-icon-movement 1s ease infinite
 
     +not-desktop()
       display: none
+
+&:not(.locked)
+  #cover
+    .headline
+      animation: cover-headline-movement 2s 1s ease-in-out forwards
+    .subline
+      animation: cover-subline-entrance 2s 1.2s ease-in-out forwards
+    .mouse-icon
+      animation: cover-icon-entrance .4s 3.2s ease-in-out forwards,
+        cover-icon-movement 1s ease infinite
