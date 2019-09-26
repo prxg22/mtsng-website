@@ -28,6 +28,16 @@
     +not-desktop()
       display: none
 
+  .loader
+    align-self: fle-flex-start;
+
+  @import './loader'
+
+&.locked
+  #cover
+    .headline, .subline, .mouse-icon
+      display: none
+
 &:not(.locked)
   #cover
     .headline
@@ -37,3 +47,5 @@
     .mouse-icon
       animation: cover-icon-entrance .4s 3.2s ease-in-out forwards,
         cover-icon-movement 1s ease infinite
+    .loader
+      display: none
