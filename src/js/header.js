@@ -1,5 +1,6 @@
 const HeaderController = (headerSelector = 'header') => {
   const header = document.querySelector(headerSelector)
+  const navContainer = header.querySelector('.nav_container')
 
   let _open = false
 
@@ -11,9 +12,9 @@ const HeaderController = (headerSelector = 'header') => {
 
   const close = () => {
     _open = false
-    header.scrollTo(0, 0)
     header.classList.remove('open')
     header.classList.add('close')
+    navContainer.scrollTo(0,0)
   }
 
   const toggle = () => {
