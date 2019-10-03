@@ -14,7 +14,8 @@ window.onload = () => {
   const cover = document.querySelector('#cover')
   const mouseIcon = cover.querySelector('#cover .mouse-icon path')
   const sections = document.querySelectorAll('section')
-  const projects = document.querySelectorAll('#work article')
+  const work = document.querySelector('#work')
+  const projects = work.querySelectorAll('#work article')
   const galleries = []
 
   smoothscroll.polyfill()
@@ -25,6 +26,8 @@ window.onload = () => {
     headerController.toggle()
   }
 
+  work.style.minHeight = `${projects.length * 100}%`
+
   nav.onclick = (ev) => {
     const { target } = ev
     const anchors = Array.prototype.slice.call(navAnchors)
@@ -34,15 +37,15 @@ window.onload = () => {
     const selector = target.attributes.href.value
     const section = document.querySelector(selector)
 
-    section.scrollIntoView({ behavior: 'smooth' })
     headerController.close()
+    section.scrollIntoView({ behavior: 'smooth' })
   }
 
   logo.onclick = (ev) => {
     ev.preventDefault()
     const section = document.querySelector('#cover')
-    section.scrollIntoView({ behavior: 'smooth' })
     headerController.close()
+    section.scrollIntoView({ behavior: 'smooth' })
   }
 
   // galleries

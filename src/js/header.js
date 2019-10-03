@@ -11,6 +11,7 @@ const HeaderController = (headerSelector = 'header') => {
 
   const close = () => {
     _open = false
+    header.scrollTo(0, 0)
     header.classList.remove('open')
     header.classList.add('close')
   }

@@ -10,31 +10,33 @@ const scroll = (container) => {
     fading = [ ...fading, ...els ]
   }
 
+  const opacity = (el, style) => el.style.opacity = style
+
   container.onscroll = () => {
     let length = showing.length
     showing.forEach((el, index) => {
       const edge = container.scrollHeight - container.clientHeight
 
       if (index === length - 1 && container.scrollTop >= edge) {
-        el.style = `opacity: 1`
+        opacity(el, '1')
         return
       }
 
       const top = el.offsetTop
       const offset = container.scrollTop - top
-      el.style = `opacity: ${1 + (offset / 500)}`
+      opacity(el, `${1 + (offset / 500)}`)
     })
 
     length = fading.length
     fading.forEach((el, index) => {
       if (container.scrollTop <= 0) {
-        el.style = `opacity: 1`
+        opacity(el, '1')
         return
       }
 
       const top = el.getBoundingClientRect().top
       const offset = top - container.scrollTop
-      el.style = `opacity: ${(offset / 500) - 1}`
+      opacity(el, `opacity: ${(offset / 500) - 1}`)
     })
   }
 

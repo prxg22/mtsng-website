@@ -7,6 +7,9 @@
   "author": "prxg22",
   "license": "MIT",
   "private": false,
+  "browserslist": [
+   "defaults"
+  ],
   "scripts": {
     "start": "parcel src/index.html --open --port 80",
     "build": "parcel build src/index.html",
@@ -17,6 +20,7 @@
     "stylus": "^0.54.5"
   },
   "dependencies": {
+    "autoprefixer": "^9.6.1",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }
