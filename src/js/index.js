@@ -14,8 +14,7 @@ window.onload = () => {
   const cover = document.querySelector('#cover')
   const mouseIcon = cover.querySelector('#cover .mouse-icon path')
   const sections = document.querySelectorAll('section')
-  const work = document.querySelector('#work')
-  const projects = work.querySelectorAll('#work article')
+  const projects = document.querySelectorAll('#work article')
   const galleries = []
 
   smoothscroll.polyfill()
@@ -25,8 +24,6 @@ window.onload = () => {
   menuButton.onclick = () => {
     headerController.toggle()
   }
-
-  work.style.minHeight = `${projects.length * 100}%`
 
   nav.onclick = (ev) => {
     const { target } = ev
