@@ -2,7 +2,8 @@ mobile-header-padding = 67px
 
 main
   height: 100%
-  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
 
   section
     padding-top: mobile-header-padding
@@ -14,7 +15,7 @@ main
   &.locked
     overflow-y: hidden;
     -webkit-overflow-scrolling: hidden;
-    
+
   @import "./cover"
   @import "./about"
   @import "./work"
