@@ -6,20 +6,24 @@ import Scroll from './scroll'
 window.onload = () => {
   const headerController = HeaderController('header')
 
-  const nav = document.querySelector('header nav')
-  const navAnchors = document.querySelectorAll('header nav a')
-  const menuButton = document.querySelector('#menu_btn')
-  const logo = document.querySelector('a#logo')
+  const header = document.querySelector('header')
+  const nav = header.querySelector('nav')
+  const navAnchors = nav.querySelectorAll('a')
+  const menuButton = header.querySelector('#menu_btn')
+  const logo = header.querySelector('a#logo')
   const main = document.querySelector('main')
-  const cover = document.querySelector('#cover')
+  const cover = main.querySelector('#cover')
   const mouseIcon = cover.querySelector('#cover .mouse-icon path')
-  const sections = document.querySelectorAll('section')
-  const projects = document.querySelectorAll('#work article')
+  const sections = main.querySelectorAll('section')
+  const projects = main.querySelectorAll('#work article')
   const galleries = []
 
   smoothscroll.polyfill()
 
-  const unlock = () => main.classList.remove('locked')
+  const unlock = () => {
+    main.classList.remove('locked')
+    header.classList.remove('locked')
+  }
   // header
   menuButton.onclick = () => {
     headerController.toggle()

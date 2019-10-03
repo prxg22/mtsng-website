@@ -35,7 +35,8 @@ header
     right: $spacing.xs
     padding: $spacing.xs
     outline: none;
-
+    opacity: 1;
+    transition: opacity .4s ease
     svg
       width: 18px;
       height: 10px;
@@ -78,6 +79,11 @@ header
           @extend $font-light
           margin-bottom: $spacing.sm
 
+
+  &.locked
+    #menu_btn
+      opacity: 0
+
   +mobile()
     max-height: 68px
     position: fixed
@@ -116,7 +122,6 @@ header
               animation: transform-open-button-middle-line (half)s ease forwards
             &:nth-child(3)
               animation: transform-open-button-last-line (animation_time)s ease forwards
-
 
   +tablet()
     padding-top: $spacing.xxhg

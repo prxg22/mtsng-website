@@ -14,7 +14,7 @@ const HeaderController = (headerSelector = 'header') => {
     _open = false
     header.classList.remove('open')
     header.classList.add('close')
-    navContainer.scrollTo(0,0)
+    // navContainer.scrollTo(0,0)
   }
 
   const toggle = () => {
